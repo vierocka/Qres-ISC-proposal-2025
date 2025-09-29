@@ -1,35 +1,33 @@
 # Signatories
+
 This section summarizes the individuals and groups who support, contribute to, or have been consulted on the Qres proposal. The project is already embedded in large research networks (CRC1310, CRC1678, FiMAR, Human Technopol, Helmholtz) and has broad community visibility.
 
 ## Project team
-Viera Kováčová, PhD (viera.kovacova@uni-koeln.de) – Principal Investigator. Leads the development of Qres, supervises technical and scientific progress, and coordinates collaborations.
-
-Prof. Michael Lässig (lassig@uni-koeln.de) – Director of CRC1310. Provides strategic oversight and advice on the broader scientific vision.
-
-Prof. Andreas Beyer (andreas.beyer@uni-koeln.de) – Director of CRC1678. Advises on systems biology integration and data-driven approaches.
-
-Stephan Kleinboltig (kleinboltig@uni-koeln.de) – CRC1310 project manager. Supports administrative coordination and R server infrastructure at the University of Cologne.
+- Viera Kováčová, PhD (viera.kovacova@uni-koeln.de) – Principal Investigator. Leads the development of Qres, supervises technical and scientific progress, and coordinates collaborations.
+- Prof. Michael Lässig (lassig@uni-koeln.de) – Director of CRC1310. Provides strategic oversight and advice on the broader scientific vision.
+- Stephan Kleinboltig (kleinboltig@uni-koeln.de) – CRC1310 project manager. Supports administrative coordination and R server infrastructure at the University of Cologne.
 
 Two PhD Students (to be hired) – Dedicated to (1) software development and database/API implementation, and (2) R/Shiny/API development and user interface.
 
 ## Contributors
-Prof. Ville Mustonen (FiMAR, Helsinki) – Provides predictive modeling expertise, helps shape the scientific scope, and engages international collaborators to contribute datasets.
-
-Dr. Fernanda Pinheiro (Human Technopol, Milan) – Leads development of the Kinbiont Julia package for bacterial growth modeling; collaborates on integration into Qres.
-
-Medina Feldl (Helmholtz, Munich) – Developer of the DGrowthR package; contributes to Qres integration for bulk dose–response analysis.
-
-Prof. Tobias Bollenbach (University of Cologne) – CRC1310 PI producing large-scale dose–response datasets; supports data contribution and benchmarking.
+- Prof. Ville Mustonen (FiMAR, Helsinki) – Provides predictive modeling expertise, helps shape the scientific scope, and engages international collaborators to contribute datasets.
+- Dr. Fernanda Pinheiro (Human Technopol, Milan) – Leads development of the Kinbiont Julia package for bacterial growth modeling; collaborates on integration into Qres.
+- Prof. Tobias Bollenbach (University of Cologne) – CRC1310 PI producing large-scale dose–response datasets; supports data contribution and benchmarking.
 
 ## Consulted
 University of Cologne colleagues, all contributing feedback and testing:
-* Theresa Finke
-* Leon Sieger
-* Gabriela Pertungaro
-* Rotem Gross
+- Theresa Finke
+- Leon Sieger
+- Gabriela Pertungaro
+- Rotem Gross
 
-* C3RDM and ITCC departments, University of Cologne – Consulted on IT infrastructure, data management, and server support.
-* Prof. Miroslav Baránek (Mendel University, Lednice, Czech Republic) – Provides perspective on dose–response measurements in plant pathogens.
+- C3RDM and ITCC departments, University of Cologne – Consulted on IT infrastructure, data management, and server support.
+- Medina Feldl (Helmholtz, Munich) – Developer of the DGrowthR package; contributes to Qres integration for bacterial dose–response analysis.
+- Prof. Andreas Beyer (andreas.beyer@uni-koeln.de) – Director of CRC1678. Advises on systems biology integration and data-driven approaches.
+- Prof. Miroslav Baránek (Mendel University, Lednice, Czech Republic) – Provides perspective on dose–response measurements in plant pathogens.
 
 Industry contacts: representatives from Agilent, Tecan, Molecular Devices, Promega, and BMGLabtech – provided test/sample files from microplate readers and laboratory robots to inform data ingestion pipelines.
 
+## Community Support
+The project is known and endorsed within CRC1310 Area A (all PIs listed at crc1310.uni-koeln.de/project_a.html ).
+This broad base of support ensures that Qres is well-positioned for adoption and sustainability, with immediate access to diverse microbial dose–response datasets.
