@@ -1,32 +1,35 @@
 # Signatories
-<!--
-This section provides the ISC with a view of the support received from
-the community for a proposal. Acceptance isn't predicated on
-popularity but community acceptance is important. Willingness to
-accept outside input is also a good marker for project delivery.
-
-An optional section would be for R-Core signatories where changes to R
-are proposed.
--->
+This section summarizes the individuals and groups who support, contribute to, or have been consulted on the Qres proposal. The project is already embedded in large research networks (CRC1310, CRC1678, FiMAR, Human Technopol, Helmholtz) and has broad community visibility.
 
 ## Project team
-<!--
-Who are the people responsible for actually delivering the project if
-the proposal gets accepted and are already signed up and rearing to
-go? Briefly describe all participants and the skills they will bring
-to the project.
--->
+Viera Kováčová, PhD (viera.kovacova@uni-koeln.de) – Principal Investigator. Leads the development of Qres, supervises technical and scientific progress, and coordinates collaborations.
+
+Prof. Michael Lässig (lassig@uni-koeln.de) – Director of CRC1310. Provides strategic oversight and advice on the broader scientific vision.
+
+Prof. Andreas Beyer (andreas.beyer@uni-koeln.de) – Director of CRC1678. Advises on systems biology integration and data-driven approaches.
+
+Stephan Kleinboltig (kleinboltig@uni-koeln.de) – CRC1310 project manager. Supports administrative coordination and R server infrastructure at the University of Cologne.
+
+Two PhD Students (to be hired) – Dedicated to (1) software development and database/API implementation, and (2) R/Shiny/API development and user interface.
 
 ## Contributors
-<!--
-Who are the people who have actively helped with this proposal but
-won't necessarily be on the core project team later?
--->
+Prof. Ville Mustonen (FiMAR, Helsinki) – Provides predictive modeling expertise, helps shape the scientific scope, and engages international collaborators to contribute datasets.
+
+Dr. Fernanda Pinheiro (Human Technopol, Milan) – Leads development of the Kinbiont Julia package for bacterial growth modeling; collaborates on integration into Qres.
+
+Medina Feldl (Helmholtz, Munich) – Developer of the DGrowthR package; contributes to Qres integration for bulk dose–response analysis.
+
+Prof. Tobias Bollenbach (University of Cologne) – CRC1310 PI producing large-scale dose–response datasets; supports data contribution and benchmarking.
 
 ## Consulted
-<!--
-Who has been given the opportunity to provide feedback on the
-proposal? This should include any R Consortium & ISC members who the
-proposal has been discussed with.
--->
+University of Cologne colleagues, all contributing feedback and testing:
+* Theresa Finke
+* Leon Sieger
+* Gabriela Pertungaro
+* Rotem Gross
+
+* C3RDM and ITCC departments, University of Cologne – Consulted on IT infrastructure, data management, and server support.
+* Prof. Miroslav Baránek (Mendel University, Lednice, Czech Republic) – Provides perspective on dose–response measurements in plant pathogens.
+
+Industry contacts: representatives from Agilent, Tecan, Molecular Devices, Promega, and BMGLabtech – provided test/sample files from microplate readers and laboratory robots to inform data ingestion pipelines.
 
