@@ -4,21 +4,31 @@ bibliography: references.bib
 
 # The Problem
 
-```{=html}
-<!--
-Outlining the issue / weak point / problem to be solved by this
-proposal. This should be a compelling section that sets the reader up
-for the next section - the proposed solution!
+Dose–response measurements are among the most fundamental experiments in biology: they quantify how cells, microbes, and tissues respond to drugs, antibiotics, toxins, or environmental perturbations. These data are critical for understanding microbial resistance, cancer treatment response, and pharmacological efficacy. Despite their central role, the raw growth curve data underlying dose–response studies remain fragmented, inconsistently reported, and difficult to reuse.
 
-It is important to cover:
+Who it affects:
 
- - [ ] What the problem is
- - [ ] Who it affects
- - [ ] Why is it a problem
- - [ ] What will solving the problem enable (why should it be solved)
- - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
- - [ ] If proposing changes to R itself: letter of support from R Core member
--->
-```
+1. Experimental researchers face difficulties identifying optimal concentrations or conditions because raw data are buried in supplementary materials or inaccessible formats.
+2. Modelers and computational biologists cannot easily benchmark or parameterize models due to lack of standardized, cross-study datasets.
+3. The R community has strong modeling tools (e.g. drc, nlme, brms) but lacks a central resource of curated datasets with reproducible access pathways.
 
-An example in-text citation [@wickham2016].
+Why it is a problem:
+
+1. Lack of accessible raw data prevents reproducibility and cross-study comparison.
+2. Metadata are often incomplete, making it impossible to assess experimental context. 
+3. Absence of standards leads to inconsistent extraction of resistance traits and dose–response parameters.
+
+What solving the problem enables:
+
+1. Establishing Qres will provide the R community with a curated, FAIR-compliant infrastructure for dose–response data.
+2. Researchers will be able to upload and share raw datasets with metadata, ensuring proper citation and recognition.
+3. Modelers will have standardized, comparable inputs for parameter estimation, benchmarking, and AI-driven predictions.
+4. R users will benefit from integrated pipelines linking raw data to statistical and mechanistic modeling.
+5. For society, Qres will deepen our understanding of microbial resistance and its evolution, support better-informed strategies to combat antibiotic resistance, and provide benchmarks that improve the design of therapeutic interventions. By enabling systematic cross-study comparisons, Qres will help identify resistance patterns earlier, guide clinical and experimental decisions, and ultimately contribute to public health.
+
+Existing work:
+1. R packages like drc [@ritz2015], nlme [@pinheiro2023], and brms [@bürkner2017] support model fitting, but they assume users already have curated datasets.
+2. DGrowthR (Helmholtz) [@feldl2025] provides functions for analyzing microbial growth, but it does not provide access to standardized raw data repositories.
+
+To date, there is no centralized, open-access platform in R that combines data storage, metadata standards, reproducible access, and interactive visualization.
+This gap limits reproducibility, slows the pace of discovery, and prevents the R community from fully supporting the next generation of data-driven microbiology and pharmacology.

@@ -1,57 +1,60 @@
 # Project plan
 
 ## Start-up phase
-<!--
-Covering the planning phase, this section should provide a relatively
-detailed plan of how work will start on the project. This section is
-important because projects need to get up and running quickly.
+Collaboration platform: We will host all code on GitHub under an open repository (qres-platform), including the API, Shiny interface, and R package. Issues and pull requests will be used to manage contributions from collaborators and the community.
 
+License decisions: All code will be released under the MIT license; data schemas and metadata standards will be released under CC-BY 4.0 to maximize reuse.
 
- - [ ] Setting up collaboration platform inc. code for contributors etc.
- - [ ] Licence decisions
- - [ ] Reporting framework
--->
-
+Reporting framework: We will provide quarterly progress updates to the ISC, including blog posts summarizing milestones. The GitHub repository will include a project board to track deliverables.
 
 ## Technical delivery
-<!--
-Covering the actual delivery of the project this section should
-provide at least a high-level description of the implementation.
+Months 1–2: Finalize schema design, API blueprint, GitHub repo setup, and automated CI/CD pipeline for the R package.
 
-Including target dates is really important as you need to be committed
-and the ISC need to have a means of tracking delivery
--->
+Months 3–4: Implement database backend and API endpoints; first internal prototype of data upload form.
+
+Months 5–6: Release alpha version of QresR package (GitHub); API documentation available online.
+
+Months 7–8: Extend Shiny interface with validated data submission and visualization modules; first external test submissions.
+
+Months 9–10: Integrate predictive tools (Python/Julia) and DGrowthR; provide R wrappers.
+
+Months 11–12: Community testing with CRC1310/FiMAR/Helmholtz datasets; finalize CRAN release of QresR; publish white paper/guidelines.
 
 ## Other aspects
 
-<!--
-How will you ensure that your work is available to the widest number
-of people? Please specify the open-source or creative commons license(s)
-you will use, how you will host your code so that others can contribute,
-and how you will publicize your work. We encourage you to plan content
-to be shared quarterly on the R Consortium blog.
+Licensing: Code under MIT; data standards and metadata under CC-BY 4.0.
 
- - [ ] Announcement post
- - [ ] Delivery blog post
- - [ ] Social media
- - [ ] UseR!
- - [ ] ISC meetings
--->
+Hosting: Public GitHub repository with issue tracking and contribution guidelines; Shiny app hosted on University of Cologne’s R Shiny server.
+
+Dissemination:
+1. Announcement blog post on R Consortium blog at project start.
+2. Quarterly blog updates on progress.
+3. Delivery blog post on release of QresR (CRAN).
+4. Presentations at UseR! 2026, ISC meetings, and relevant microbiology conferences.
+5. Social media announcements (via CRC1310, FiMAR, and partner institutes).
 
 ## Budget & funding plan
 
-<!--
-Outline the milestones for development and how much funding will be
-required for each stage (as payments will be tied to project milestone
-completion). Each milestone should specify the work to be done and the
-expected outcomes, providing enough detail for the ISC to understand
-the scope of the project work and assess the likelihood of success.
+Funding is requested primarily for labor costs:
+Two PhD students (12 months each)
+1. PhD student 1 (Software Development & Data Engineering): Responsible for database, API, and storage pipelines.
+2. PhD student 2 (R/Shiny/API Development): Responsible for R package, Shiny interface, and automated data submission.
+3. The PI (Viera Kováčová, University of Cologne) will supervise the project but does not request salary support.
+4. No funds are requested for travel, publication fees, or hardware. University of Cologne provides server infrastructure.
 
-We expect that most of the budget will be allocated
-for labor costs. We do not cover indirect costs. The ISC grants cannot
-cover such things as travel, lodging, food, journal publication fees,
-or personal hardware. Cloud services may be covered if they are specific
-to the project and the project period. The ISC reserves the right to vet
-how funds are used for each project separately. If in doubt, please reach
-out to us.
--->
+| Role                                                    | FTE | Duration  | Cost per year (€) | Total (€)   |
+| ------------------------------------------------------- | --- | --------- | ----------------- | ----------- |
+| PhD Student 1 – Software Development & Data Engineering | 1.0 | 12 months | 76,500            | 76,500      |
+| PhD Student 2 – R/Shiny/API Development                 | 1.0 | 12 months | 76,500            | 76,500      |
+|Total Personnel                                     | 2.0 | 12 months | –                 | 153,000 |
+
+
+Milestones tied to funding release:
+Month 4: API + database schema complete → €30,600
+Month 6: Alpha R package + API documentation → €30,600
+Month 8: Shiny submission system + visualization → €30,600
+Month 10: Integration with external tools + DGrowthR → €30,600
+Month 12: CRAN release, guidelines, dissemination → €30,600
+
+# Budget Justification
+The requested funding is dedicated entirely to two full-time PhD student positions for 12 months. One PhD student will focus on software development and data engineering (database design, storage pipelines, REST API), while the second will focus on R/Shiny and API development (R package, submission interface, visualization). This division of labor is essential to ensure rapid and parallel progress across the backend and user-facing components of Qres. The PI (Viera Kováčová) will supervise the project but does not request salary support, ensuring that 100% of ISC funds are invested directly into infrastructure development for the R community.

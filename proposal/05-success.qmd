@@ -1,8 +1,4 @@
 # Success
-<!--
-Projects should have a definition of done that is measurable, and a
-thorough understanding going in of what the risks are to delivery
--->
 
 ## Definition of done
 The project will be considered complete and successful when:
