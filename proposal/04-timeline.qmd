@@ -46,7 +46,7 @@ Two PhD students (12 months each)
 | ------------------------------------------------------- | --- | --------- | ----------------- | ----------- |
 | PhD Student 1 – Software Development & Data Engineering | 1.0 | 12 months | 76,500            | 76,500      |
 | PhD Student 2 – R/Shiny/API Development                 | 1.0 | 12 months | 76,500            | 76,500      |
-|Total Personnel                                     | 2.0 | 12 months | –                 | 153,000 |
+|Total Personnel                                          | 2.0 | 12 months | –                 | 153,000     |
 
 
 Milestones tied to funding release:

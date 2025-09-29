@@ -53,12 +53,6 @@ Benefits to the R community:
 By solving the accessibility and reproducibility gap in dose–response research, the Qres will accelerate discovery, improve experimental design, and expand R’s role as the central platform for quantitative biology (for example, in the field of antibiotic resistance).
 
 ## Detail
-<!--
-Go into more detail about the specifics of the project and how it delivers
-against the problem.
-
-Depending on project type the detail section should include:
--->
 
 ### Minimum Viable Product
 
