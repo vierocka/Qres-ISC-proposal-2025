@@ -1,6 +1,31 @@
 # Executive Summary
 
-<!--
-This section provides a condensed view of the entire proposal, one page long.
-It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
--->
+Dose–response data are fundamental to research in microbiology, oncology, pharmacology, biophysics, and toxicology; yet, raw datasets remain fragmented, inconsistently formatted, and often lack metadata, making them challenging to integrate into reproducible R workflows. QRes platform is a web-based platform hosted at the University of Cologne that collects, processes, and analyzes dose–response datasets. This proposal seeks R Consortium support to expand QRes into a fully R-integrated, open-source resource for the global R community.
+
+The project aims to deliver a public API and an R package designed for standardized data access, database storage, and data analysis. Additionally, it will provide an enhanced R Shiny interface that allows users to both upload and download raw data along with its associated metadata, as well as query and analyze this data. This interface will include an automated submission form for validating and storing new datasets, as well as tools for interactive visualization and analysis of dose–response measurements, all accessible directly through the browser.
+
+QRes will integrate predictive tools developed in Python and Julia by Prof. Ville Mustonen (FiMAR, Helsinki) and Dr. Fernanda Pinheiro (Human Technopol, Milan), enabling cross-language interoperability. In addition, the DGrowthR package (developed by Medina Feldl at Helmholtz, Munich) will be incorporated as an analysis option for bulk dose–response data.
+Key outputs include an R package released on CRAN, standardized data formats, reproducible workflows, and community guidelines establishing best practices and gold standards for dose–response measurements. By bridging R with Python and Julia tools, Qres will provide a foundation for AI-driven analysis and long-term reproducible science.
+This project directly addresses the R Consortium’s mission by strengthening technical infrastructure, fostering interoperability, and serving a broad international user base across biology, biophysics, and medicine.
+
+The Qres platform is an open-access dose–response database and web service designed to transform how raw microbial and cancer cell growth curve data are collected, curated, and analyzed. Measuring dose–response curves is a fundamental experiment in microbiology, oncology, biophysics, and pharmacology; yet, access to raw time-resolved data is limited, often buried in supplementary files and lacking standardized formats. This fragmentation hampers reproducibility, inhibits cross-study comparisons, and slows progress in understanding resistance dynamics and cellular responses under perturbation.
+
+Qres addresses these challenges by providing a centralized, open, and R-integrated platform that:
+* Collects raw, time-resolved growth curves under antibiotic, chemical, genetic, or environmental perturbations.
+* Offers an automated Shiny-based submission form for uploading and validating raw measurements with curated metadata.
+* Implements standardized pipelines for extracting quantitative resistance traits and automating the fitting and benchmarking of growth curve models.
+* Provides a public API and R package to programmatically query datasets, returning either complete raw data or derived parameters.
+* Integrates curve fitting and predictive modeling tools developed in Python and Julia by Prof. Ville Mustonen (FiMAR, Helsinki) and Dr. Fernanda Pinheiro (Human Technopol, Milan), reimplemented or wrapped for use in R.
+* Connects with the DGrowthR package (Medina Feldl, Helmholtz, Munich) for analysis of microbial growth data.
+
+Expected outcomes and deliverables include:
+* An R package released on CRAN with functions for standardized data access, preprocessing, and model fitting.
+* A robust R Shiny interface enabling data upload/download, metadata validation, and interactive visualization.
+* A curated, FAIR-compliant database with persistent identifiers for citation and cross-study reuse.
+* Benchmarked integration of cross-language predictive tools within R workflows.
+* Published best-practice guidelines and gold standards for microbial dose–response experiments.
+
+Budget and Team: Funding is requested to support two PhD-level staff members for 12 months — one focusing on database/software development, and the other on R, Shiny, and API development. The PI (Viera Kováčová, University of Cologne) will supervise the project, but does not request salary support. Collaborations with FiMAR (Finland), Human Technopol (Italy), and Helmholtz (Germany) provide complementary expertise in predictive modeling and growth analysis.
+
+By creating an open, standardized, and interactive infrastructure, Qres will accelerate reproducible research, establish community standards, and strengthen R’s role as the primary platform for dose–response data analysis, serving a broad international user base across microbiology, oncology, pharmacology, and beyond.
+
