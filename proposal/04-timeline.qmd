@@ -1,60 +1,125 @@
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
+
 # Project plan
 
 ## Start-up phase
-Collaboration platform: We will host all code on GitHub under an open repository (qres-platform), including the API, Shiny interface, and R package. Issues and pull requests will be used to manage contributions from collaborators and the community.
 
-License decisions: All code will be released under the MIT license; data schemas and metadata standards will be released under CC-BY 4.0 to maximize reuse.
+Collaboration platform: We will host all code on GitHub under an open
+repository (qres-platform), including the API, Shiny interface, and R
+package. Issues and pull requests will be used to manage contributions
+from collaborators and the community.
 
-Reporting framework: We will provide quarterly progress updates to the ISC, including blog posts summarizing milestones. The GitHub repository will include a project board to track deliverables.
+License decisions: All code will be released under the MIT license; data
+schemas and metadata standards will be released under CC-BY 4.0 to
+maximize reuse.
+
+Reporting framework: We will provide quarterly progress updates to the
+ISC, including blog posts summarizing milestones. The GitHub repository
+will include a project board to track deliverables.
 
 ## Technical delivery
-Months 1–2: Finalize schema design, API blueprint, GitHub repo setup, and automated CI/CD pipeline for the R package.
 
-Months 3–4: Implement database backend and API endpoints; first internal prototype of data upload form.
+The project will be delivered in phased milestones over 12 months, with
+work shared between the PI (R/Shiny development), a part-time developer
+(database and API expertise), a student assistant (data curation and
+testing), and external consultants (mentorship and optimization).
 
-Months 5–6: Release alpha version of QresR package (GitHub); API documentation available online.
-
-Months 7–8: Extend Shiny interface with validated data submission and visualization modules; first external test submissions.
-
-Months 9–10: Integrate predictive tools (Python/Julia) and DGrowthR; provide R wrappers.
-
-Months 11–12: Community testing with CRC1310/FiMAR/Helmholtz datasets; finalize CRAN release of QresR; publish white paper/guidelines.
+-   **Months 1–2:**
+    -   Hire part-time developer and student assistant.
+    -   Define database schema and metadata standards.
+    -   Set up GitHub repository with open license and contribution
+        guidelines.
+    -   Begin API blueprint under developer’s guidance.
+-   **Months 3–4:**
+    -   Developer: implement core database backend and initial API
+        endpoints.
+    -   PI: create skeleton of the QresR package to connect to API.
+    -   Student assistant: curate test datasets and metadata.
+    -   First internal prototype of Shiny data upload form.
+-   **Months 5–6:**
+    -   Release alpha version of QresR package on GitHub.
+    -   Developer: extend API functionality and documentation.
+    -   PI: integrate Shiny form with API for validation.
+    -   Student assistant: test metadata submission workflows.
+-   **Months 7–8:**
+    -   Extend Shiny interface with interactive visualization modules.
+    -   Enable validated external test submissions.
+    -   Consultants: provide code review and mentoring on API efficiency
+        and R optimization.
+-   **Months 9–10:**
+    -   Integrate DGrowthR workflows for bulk growth analysis.
+    -   Provide R wrappers for selected predictive tools (Python/Julia)
+        with consultant guidance.
+    -   Student assistant: continue testing with real CRC1310/FiMAR
+        datasets.
+-   **Months 11–12:**
+    -   Community testing with CRC1310, FiMAR, and Helmholtz partners.
+    -   Finalize CRAN release of QresR package with vignettes.
+    -   Publish guidelines/white paper on dose–response data standards.
+    -   Disseminate results via R Consortium blog and community
+        channels.
 
 ## Other aspects
 
 Licensing: Code under MIT; data standards and metadata under CC-BY 4.0.
 
-Hosting: Public GitHub repository with issue tracking and contribution guidelines; Shiny app hosted on University of Cologne’s R Shiny server.
+Hosting: Public GitHub repository with issue tracking and contribution
+guidelines; Shiny app hosted on University of Cologne’s R Shiny server.
 
 Dissemination:
-1. Announcement blog post on R Consortium blog at project start.
-2. Quarterly blog updates on progress.
-3. Delivery blog post on release of QresR (CRAN).
-4. Presentations at UseR! 2026, ISC meetings, and relevant microbiology conferences.
-5. Social media announcements (via CRC1310, FiMAR, and partner institutes).
 
-## Budget & funding plan
+1.  Announcement blog post on R Consortium blog at project start.
+2.  Quarterly blog updates on progress.
+3.  Delivery blog post on release of QresR (CRAN).
+4.  Presentations at UseR! 2026, ISC meetings, and relevant microbiology
+    and drug resistance conferences.
+5.  Social media announcements (via CRC1310, FiMAR, and partner
+    institutes).
+
+# Budget & Funding Plan
+
+## Budget Justification
+
+The requested funding will be used entirely for direct project
+development, with a focus on delivering a functional, open-source Qres
+platform within 12 months. We propose a lean model: a part-time
+developer to co-implement the database and API, a student assistant to
+support data stewardship and testing, and limited funds for
+infrastructure and expert consultancy. The PI, Viera Kováčová, will lead
+the project and contribute actively to programming (R/Shiny interface,
+metadata submission form, R package), while also receiving mentorship
+from the funded developer and consultants to strengthen her expertise in
+database and API design. No PI salary support is requested.
+
+| Item | Estimated Cost (€) | Notes |
+|----|----|----|
+| **Part-time Developer (0.5 FTE, 8–10 months)** | 32,000 | Skilled in database/API development; designs backend, mentors PI on best practices |
+| **Student Assistant (Data Steward, 8h/week, 12 months)** | 6,000 | Supports metadata curation, data validation, Shiny testing |
+| **Miscellaneous / Infrastructure** | 2,000 | Server extensions, additional storage, small-scale shinyapps.io environment for testing |
+| **Consultancy / Mentorship** | 10,000 | Contracted expert(s) from the R community for regular guidance on code optimization, database design, and API best practices |
+| **Total** | **50,000** |  |
+
+## Milestones linked to funding
 
 Funding is requested primarily for labor costs:
-Two PhD students (12 months each)
-1. PhD student 1 (Software Development & Data Engineering): Responsible for database, API, and storage pipelines.
-2. PhD student 2 (R/Shiny/API Development): Responsible for R package, Shiny interface, and automated data submission.
-3. The PI (Viera Kováčová, University of Cologne) will supervise the project but does not request salary support.
-4. No funds are requested for travel, publication fees, or hardware. University of Cologne provides server infrastructure.
 
-| Role                                                    | FTE | Duration  | Cost per year (€) | Total (€)   |
-| ------------------------------------------------------- | --- | --------- | ----------------- | ----------- |
-| PhD Student 1 – Software Development & Data Engineering | 1.0 | 12 months | 76,500            | 76,500      |
-| PhD Student 2 – R/Shiny/API Development                 | 1.0 | 12 months | 76,500            | 76,500      |
-|Total Personnel                                          | 2.0 | 12 months | –                 | 153,000     |
+| Month(s) | Deliverable / Milestone | Funding (€) |
+|----|----|----|
+| 2 | Database schema + REST API prototype; initial test datasets curated | 10,000 |
+| 4 | Extended database + FAIR ingestion pipeline; API documentation draft | 10,000 |
+| 6 | QresR R package prototype on GitHub; DGrowthR integration started | 10,000 |
+| 8 | Shiny submission system with metadata validation + visualization modules | 10,000 |
+| 12 | CRAN release of QresR; tutorials, case studies, community guidelines | 10,000 |
+| **Total** |  | **50,000** |
 
+**Notes / Flexibility**
 
-Milestones tied to funding release:
-Month 4: API + database schema complete → €30,600
-Month 6: Alpha R package + API documentation → €30,600
-Month 8: Shiny submission system + visualization → €30,600
-Month 10: Integration with external tools + DGrowthR → €30,600
-Month 12: CRAN release, guidelines, dissemination → €30,600
-
-# Budget Justification
-The requested funding is dedicated entirely to two full-time PhD student positions for 12 months. One PhD student will focus on software development and data engineering (database design, storage pipelines, REST API), while the second will focus on R/Shiny and API development (R package, submission interface, visualization). This division of labor is essential to ensure rapid and parallel progress across the backend and user-facing components of Qres. The PI (Viera Kováčová) will supervise the project but does not request salary support, ensuring that 100% of ISC funds are invested directly into infrastructure development for the R community.
+1.  The Consultancy/Mentorship line (€10k) can be adjusted downward
+    (e.g. €5–7k) if reviewers push back on budget.
+2.  University of Cologne will provide an additional student assistant
+    (in-kind contribution, not funded by ISC).
+3.  No overhead, travel, or PI salary is requested.

@@ -1,0 +1,1000 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[top=10pc,bottom=10pc,left=11pc,right=11pc,heightrounded,left=1.25in,right=1.25in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+
+
+% -----------------------
+% CUSTOM PREAMBLE STUFF
+% -----------------------
+
+% -----------------
+% Typography tweaks
+% -----------------
+% Indent size
+\setlength{\parindent}{1pc}  % 1p0
+
+% Fix widows and orphans
+\usepackage[all,defaultlines=2]{nowidow}
+
+% List things
+\usepackage{enumitem}
+% Same document-level indentation for ordered and ordered lists
+\setlist[1]{labelindent=\parindent}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+% Wrap definition list terms
+% https://tex.stackexchange.com/a/9763/11851
+\setlist[description]{style=unboxed}
+
+
+% For better TOCs
+\usepackage[titles]{tocloft}
+
+% Remove left margin in lists inside longtables
+% https://tex.stackexchange.com/a/378190/11851
+\AtBeginEnvironment{longtable}{\setlist[itemize]{nosep, wide=0pt, leftmargin=*, before=\vspace*{-\baselineskip}, after=\vspace*{-\baselineskip}}}
+
+% Allow for /singlespacing and /doublespacing
+\usepackage{setspace}
+
+
+% -----------------
+% Title block stuff
+% -----------------
+
+% Abstract
+\usepackage[overload]{textcase}
+\usepackage[runin]{abstract}
+\renewcommand{\abstractnamefont}{\sffamily\footnotesize\bfseries\MakeUppercase}
+\renewcommand{\abstracttextfont}{\sffamily\small}
+\setlength{\absleftindent}{\parindent * 2}
+\setlength{\absrightindent}{\parindent * 2}
+\abslabeldelim{\quad}
+\setlength{\abstitleskip}{-\parindent}
+
+
+% Keywords
+\newenvironment{keywords}
+{\vskip -3em \hspace{\parindent}\small\sffamily{\sffamily\footnotesize\bfseries\MakeUppercase{Keywords}}\quad}
+{\vskip 3em}
+
+  
+% Title
+\usepackage{titling}
+\setlength{\droptitle}{3em}
+\pretitle{\par\vskip 5em \begin{flushleft}\LARGE\sffamily\bfseries}
+\posttitle{\par\end{flushleft}\vskip 0.75em}
+
+
+% Authors
+%
+% PHEW this is complicated for a number of reasons!
+%
+% When using \and with multiple authors, the article class in LaTeX wraps each 
+% author block in a tabluar environment with a hardcoded center alignment. It's 
+% possible to use \preauthor{} to start tabulars with a left alignment {l}, but 
+% that only applies to the first author because the others all use \and with the 
+% hardcoded {c}. But we can override the \and command and add our own {l}
+%
+% (See https://github.com/rstudio/rmarkdown/issues/1716#issuecomment-560601691 
+% for an example of redefining \and to just be \\)
+%
+% That's all great, except tabulars have some amount of default horizontal 
+% padding, which makes left-aligned author blocks not actuall get fully 
+% left-aligned on the page. We can set the horizontal padding for the column to 
+% 0, but it requires some wonky syntax: {@{\hspace{0em}}l@{}}
+\renewcommand{\and}{\end{tabular} \hskip 3em \begin{tabular}[t]{@{\hspace{0em}}l@{}}}
+\preauthor{\begin{flushleft}
+           \lineskip 1.5em 
+           \begin{tabular}[t]{@{\hspace{0em}}l@{}}}
+\postauthor{\end{tabular}\par\end{flushleft}}
+
+% Omit the date since the \published command does that
+\predate{}
+\postdate{}
+
+% Command for a note at the top of the first page describing the publication
+% status of the paper.
+\newcommand{\published}[1]{%
+   \gdef\puB{#1}}
+   \newcommand{\puB}{}
+   \renewcommand{\maketitlehooka}{%
+       \par\noindent\footnotesize\sffamily \puB}
+
+
+% ------------------
+% Section headings
+% ------------------
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\sffamily\bfseries\raggedright}
+\titleformat*{\subsection}{\large\sffamily\bfseries\raggedright}
+\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\raggedright}
+\titleformat*{\paragraph}{\small\sffamily\bfseries\raggedright}
+
+% \titlespacing{<command>}{<left>}{<before-sep>}{<after-sep>}
+% Starred version removes indentation in following paragraph
+\titlespacing*{\section}{0em}{2em}{0.1em}
+\titlespacing*{\subsection}{0em}{1.25em}{0.1em}
+\titlespacing*{\subsubsection}{0em}{0.75em}{0em}
+
+
+% -----------
+% Footnotes
+% -----------
+% NB: footmisc has to come after setspace and biblatex because of conflicts
+\usepackage[bottom, flushmargin]{footmisc}
+\renewcommand*{\footnotelayout}{\footnotesize}
+
+\addtolength{\skip\footins}{10pt}    % vertical space between rule and main text
+\setlength{\footnotesep}{5pt}  % vertical space between footnotes
+
+
+% ----------
+% Captions
+% ----------
+\usepackage[font={small,sf}, labelfont={small,sf,bf}]{caption}
+
+
+% --------
+% Macros
+% --------
+% pandoc will not convert text within \begin{} XXX \end{} to Markdown and will
+% treat it as regular TeX. Because of this, it's impossible to do stuff like
+% this:
+
+% \begin{landscape}
+%
+% | One | Two   |
+% |-----+-------|
+% | my  | table |
+% | is  | nice  |
+%
+% \end{landscape}
+%
+% Since it'll render like: | One | Two | |—–+——-| | my | table | | is | nice |
+% 
+% BUT, from this http://stackoverflow.com/a/41945462/120898 we can get around
+% this by creating new commands for \begin and \end, like this:
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
+% \blandscape
+%
+% | One | Two   |
+% |-----+-------|
+% | my  | table |
+% | is  | nice  |
+%
+% \elandscape
+
+% Same thing, but for generic groups
+% But can't use \bgroup and \egroup because those are built-in TeX things
+\newcommand{\stgroup}{\begingroup}
+\newcommand{\fingroup}{\endgroup}
+
+
+% ---------------------------
+% END CUSTOM PREAMBLE STUFF
+% ---------------------------
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={QRes - An Open-Source Dose--Response Data Platform for the R Community},
+  pdfauthor={Viera Kovacova},
+  colorlinks=true,
+  linkcolor={DarkSlateBlue},
+  filecolor={Maroon},
+  citecolor={DarkSlateBlue},
+  urlcolor={DarkSlateBlue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+% -----------------------
+% END-OF-PREAMBLE STUFF
+% -----------------------
+
+
+
+% ---------------------- 
+% Title block elements
+% ---------------------- 
+\usepackage{orcidlink}  % Create automatic ORCID icons/links
+
+\title{QRes - An Open-Source Dose--Response Data Platform for the R
+Community}
+
+
+\author{
+{\large Viera Kovacova~\orcidlink{0000-0003-4581-4254}}%
+ \\%
+Viera Kovacova, Institute for Biological Physics, University of Cologne,
+Cologne, Germany \\%
+{\footnotesize \url{}} \and
+}
+
+\date{}
+
+
+% Typeset URLs in the same font as their parent environment
+%
+% This has to come at the end of the preamble, after any biblatex stuff because 
+% some biblatex styles (like APA) define their own \urlstyle{}
+\usepackage{url}
+\urlstyle{same}
+
+% ---------------------------
+% END END-OF-PREAMBLE STUFF
+% ---------------------------
+\begin{document}
+% ---------------
+% TITLE SECTION
+% ---------------
+\published{\textbf{2025-09-29}}
+
+\maketitle
+
+
+
+% -------------------
+% END TITLE SECTION
+% -------------------
+
+
+
+\section{Executive Summary}\label{executive-summary}
+
+Dose--response data are fundamental to research in microbiology,
+oncology, pharmacology, biophysics, and toxicology; yet, raw datasets
+remain fragmented, inconsistently formatted, and often lack metadata,
+making them challenging to integrate into reproducible R workflows. QRes
+platform is a web-based platform hosted at the University of Cologne
+that collects, processes, and analyzes dose--response datasets. This
+proposal seeks R Consortium support to expand QRes into a fully
+R-integrated, open-source resource for the global R community.
+
+The project aims to deliver a public API and an R package designed for
+standardized data access, database storage, and data analysis.
+Additionally, it will provide an enhanced R Shiny interface that allows
+users to both upload and download raw data along with its associated
+metadata, as well as query and analyze this data. This interface will
+include an automated submission form for validating and storing new
+datasets, as well as tools for interactive visualization and analysis of
+dose--response measurements, all accessible directly through the
+browser.
+
+QRes will integrate predictive tools developed in Python and Julia by
+Prof.~Ville Mustonen (FiMAR, Helsinki) and Dr.~Fernanda Pinheiro (Human
+Technopol, Milan), enabling cross-language interoperability. In
+addition, the DGrowthR package (developed by Medina Feldl at Helmholtz,
+Munich) will be incorporated as an analysis option for bulk
+dose--response data. Key outputs include an R package released on CRAN,
+standardized data formats, reproducible workflows, and community
+guidelines establishing best practices and gold standards for
+dose--response measurements. By bridging R with Python and Julia tools,
+Qres will provide a foundation for AI-driven analysis and long-term
+reproducible science. This project directly addresses the R Consortium's
+mission by strengthening technical infrastructure, fostering
+interoperability, and serving a broad international user base across
+biology, biophysics, and medicine.
+
+The Qres platform is an open-access dose--response database and web
+service designed to transform how raw microbial and cancer cell growth
+curve data are collected, curated, and analyzed. Measuring
+dose--response curves is a fundamental experiment in microbiology,
+oncology, biophysics, and pharmacology; yet, access to raw time-resolved
+data is limited, often buried in supplementary files and lacking
+standardized formats. This fragmentation hampers reproducibility,
+inhibits cross-study comparisons, and slows progress in understanding
+resistance dynamics and cellular responses under perturbation.
+
+Qres addresses these challenges by providing a centralized, open, and
+R-integrated platform that: * Collects raw, time-resolved growth curves
+under antibiotic, chemical, genetic, or environmental perturbations. *
+Offers an automated Shiny-based submission form for uploading and
+validating raw measurements with curated metadata. * Implements
+standardized pipelines for extracting quantitative resistance traits and
+automating the fitting and benchmarking of growth curve models. *
+Provides a public API and R package to programmatically query datasets,
+returning either complete raw data or derived parameters. * Integrates
+curve fitting and predictive modeling tools developed in Python and
+Julia by Prof.~Ville Mustonen (FiMAR, Helsinki) and Dr.~Fernanda
+Pinheiro (Human Technopol, Milan), reimplemented or wrapped for use in
+R. * Connects with the DGrowthR package (Medina Feldl, Helmholtz,
+Munich) for analysis of microbial growth data.
+
+Expected outcomes and deliverables include: * An R package released on
+CRAN with functions for standardized data access, preprocessing, and
+model fitting. * A robust R Shiny interface enabling data
+upload/download, metadata validation, and interactive visualization. * A
+curated, FAIR-compliant database with persistent identifiers for
+citation and cross-study reuse. * Benchmarked integration of
+cross-language predictive tools within R workflows. * Published
+best-practice guidelines and gold standards for microbial dose--response
+experiments.
+
+Budget and Team: Funding is requested to support two PhD-level staff
+members for 12 months --- one focusing on database/software development,
+and the other on R, Shiny, and API development. The PI (Viera Kováčová,
+University of Cologne) will supervise the project, but does not request
+salary support. Collaborations with FiMAR (Finland), Human Technopol
+(Italy), and Helmholtz (Germany) provide complementary expertise in
+predictive modeling and growth analysis.
+
+By creating an open, standardized, and interactive infrastructure, Qres
+will accelerate reproducible research, establish community standards,
+and strengthen R's role as the primary platform for dose--response data
+analysis, serving a broad international user base across microbiology,
+oncology, pharmacology, and beyond.
+
+\section{Signatories}\label{signatories}
+
+This section summarizes the individuals and groups who support,
+contribute to, or have been consulted on the Qres proposal. The project
+is already embedded in large research networks (CRC1310, CRC1678, FiMAR,
+Human Technopol, Helmholtz) and has broad community visibility.
+
+\subsection{Project team}\label{project-team}
+
+\begin{itemize}
+\tightlist
+\item
+  Viera Kováčová, PhD (viera.kovacova@uni-koeln.de) -- Principal
+  Investigator. Leads the development of Qres, supervises technical and
+  scientific progress, and coordinates collaborations.
+\item
+  Prof.~Michael Lässig (lassig@uni-koeln.de) -- Director of CRC1310.
+  Provides strategic oversight and advice on the broader scientific
+  vision.
+\item
+  Stephan Kleinboltig (kleinboltig@uni-koeln.de) -- CRC1310 project
+  manager. Supports administrative coordination and R server
+  infrastructure at the University of Cologne.
+\end{itemize}
+
+Two PhD Students (to be hired) -- Dedicated to (1) software development
+and database/API implementation, and (2) R/Shiny/API development and
+user interface.
+
+\subsection{Contributors}\label{contributors}
+
+\begin{itemize}
+\tightlist
+\item
+  Prof.~Ville Mustonen (FiMAR, Helsinki) -- Provides predictive modeling
+  expertise, helps shape the scientific scope, and engages international
+  collaborators to contribute datasets.
+\item
+  Dr.~Fernanda Pinheiro (Human Technopol, Milan) -- Leads development of
+  the Kinbiont Julia package for bacterial growth modeling; collaborates
+  on integration into Qres.
+\item
+  Prof.~Tobias Bollenbach (University of Cologne) -- CRC1310 PI
+  producing large-scale dose--response datasets; supports data
+  contribution and benchmarking.
+\end{itemize}
+
+\subsection{Consulted}\label{consulted}
+
+University of Cologne colleagues, all contributing feedback and testing:
+- Theresa Finke - Leon Sieger - Gabriela Pertungaro - Rotem Gross
+
+\begin{itemize}
+\tightlist
+\item
+  C3RDM and ITCC departments, University of Cologne -- Consulted on IT
+  infrastructure, data management, and server support.
+\item
+  Medina Feldl (Helmholtz, Munich) -- Developer of the DGrowthR package;
+  contributes to Qres integration for bacterial dose--response analysis.
+\item
+  Prof.~Andreas Beyer (andreas.beyer@uni-koeln.de) -- Director of
+  CRC1678. Advises on systems biology integration and data-driven
+  approaches.
+\item
+  Prof.~Miroslav Baránek (Mendel University, Lednice, Czech Republic) --
+  Provides perspective on dose--response measurements in plant
+  pathogens.
+\end{itemize}
+
+Industry contacts: representatives from Agilent, Tecan, Molecular
+Devices, Promega, and BMGLabtech -- provided test/sample files from
+microplate readers and laboratory robots to inform data ingestion
+pipelines.
+
+\subsection{Community Support}\label{community-support}
+
+The project is known and endorsed within CRC1310 Area A (all PIs listed
+at crc1310.uni-koeln.de/project\_a.html ). This broad base of support
+ensures that Qres is well-positioned for adoption and sustainability,
+with immediate access to diverse microbial dose--response datasets.
+
+\section{The Problem}\label{the-problem}
+
+Dose--response measurements are among the most fundamental experiments
+in biology: they quantify how cells, microbes, and tissues respond to
+drugs, antibiotics, toxins, or environmental perturbations. These data
+are critical for understanding microbial resistance, cancer treatment
+response, and pharmacological efficacy. Despite their central role, the
+raw growth curve data underlying dose--response studies remain
+fragmented, inconsistently reported, and difficult to reuse.
+
+Who it affects:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Experimental researchers face difficulties identifying optimal
+  concentrations or conditions because raw data are buried in
+  supplementary materials or inaccessible formats.
+\item
+  Modelers and computational biologists cannot easily benchmark or
+  parameterize models due to lack of standardized, cross-study datasets.
+\item
+  The R community has strong modeling tools (e.g.~drc, nlme, brms) but
+  lacks a central resource of curated datasets with reproducible access
+  pathways.
+\end{enumerate}
+
+Why it is a problem:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lack of accessible raw data prevents reproducibility and cross-study
+  comparison.
+\item
+  Metadata are often incomplete, making it impossible to assess
+  experimental context.
+\item
+  Absence of standards leads to inconsistent extraction of resistance
+  traits and dose--response parameters.
+\end{enumerate}
+
+What solving the problem enables:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Establishing Qres will provide the R community with a curated,
+  FAIR-compliant infrastructure for dose--response data.
+\item
+  Researchers will be able to upload and share raw datasets with
+  metadata, ensuring proper citation and recognition.
+\item
+  Modelers will have standardized, comparable inputs for parameter
+  estimation, benchmarking, and AI-driven predictions.
+\item
+  R users will benefit from integrated pipelines linking raw data to
+  statistical and mechanistic modeling.
+\item
+  For society, Qres will deepen our understanding of microbial
+  resistance and its evolution, support better-informed strategies to
+  combat antibiotic resistance, and provide benchmarks that improve the
+  design of therapeutic interventions. By enabling systematic
+  cross-study comparisons, Qres will help identify resistance patterns
+  earlier, guide clinical and experimental decisions, and ultimately
+  contribute to public health.
+\end{enumerate}
+
+Existing work: 1. R packages like drc (\citeproc{ref-ritz2015}{Ritz et
+al. 2015}), nlme (\citeproc{ref-pinheiro2023}{Pinheiro and Bates 2023}),
+and brms (\citeproc{ref-buxfcrkner2017}{Bürkner 2017}) support model
+fitting, but they assume users already have curated datasets. 2.
+DGrowthR (Helmholtz) (\citeproc{ref-feldl2025}{Feldl and Olayo Alarcon
+2025}) provides functions for analyzing microbial growth, but it does
+not provide access to standardized raw data repositories.
+
+To date, there is no centralized, open-access platform in R that
+combines data storage, metadata standards, reproducible access, and
+interactive visualization. This gap limits reproducibility, slows the
+pace of discovery, and prevents the R community from fully supporting
+the next generation of data-driven microbiology and pharmacology.
+
+\section{The proposal}\label{the-proposal}
+
+\subsection{Approach and Work Plan}\label{approach-and-work-plan}
+
+We will address the problem of fragmented and inaccessible
+dose--response datasets by developing Qres into an open, standardized,
+R-integrated platform with the following concrete actions: ** API and
+Database Development (Months 1--4) * Implement a REST API with
+standardized JSON schema. * Expand the database schema to store raw
+growth curves and curated metadata. * Establish FAIR-compliant pipelines
+for data ingestion. ** R Package (Months 5--6) * Develop an open-source
+R package (QresR) to query the database and API. * Provide functions for
+data preprocessing, extraction of resistance traits, and integration
+with existing modeling packages (drc, nlme, brms). * Begin integration
+of DGrowthR for bulk growth curve analysis. ** Shiny Interface and
+Submission Form (Months 7--8) * Extend the existing Shiny prototype into
+a full interface supporting upload and download of raw growth data with
+metadata. * Implement automated submission validation and error
+reporting. * Add interactive visualization and curve-fitting modules. **
+Cross-Language Integration (Months 9--10) * Reimplement or wrap selected
+Python/Julia predictive tools developed by collaborators (Mustonen,
+Pinheiro). * Benchmark results across platforms to ensure
+reproducibility. ** Testing, Standards, and Dissemination (Months
+11--12) * Pilot test data submissions with internal and external
+collaborators. * Optimize submission form and analysis workflows. *
+Publish the R package on CRAN, complete documentation, tutorials, and
+case studies. * Release community guidelines establishing gold standards
+for dose--response experiments.
+
+\subsection{Risk Management}\label{risk-management}
+
+1.) Risk: Data heterogeneity -\textgreater{} Mitigation: enforce a
+standardized metadata schema and automated validation in the Shiny
+submission form. 2.) Risk: Integration complexity of Python/Julia tools
+-\textgreater{} Mitigation: begin with a small subset of methods and
+provide R wrappers before attempting full reimplementations. 3.) Risk:
+Limited adoption -\textgreater{} Mitigation: leverage CRC1310, FiMAR,
+and Human Technopol networks to ensure early use and dataset
+contributions; provide persistent identifiers for proper citation.
+
+\subsection{Timeline}\label{timeline}
+
+Months 1--4: Database + API development. Months 5--6: R package
+prototype. Months 7--8: Shiny submission system. Months 9--10:
+Cross-language integration. Month 11: Testing and optimization. Month
+12: Release, dissemination, and publication of guidelines.
+
+\subsection{Overview}\label{overview}
+
+The Qres platform is an open-access dose--response database and web
+service that collects, organizes, and analyzes raw, time-resolved
+microbial growth curves under antibiotic, genetic, and environmental
+perturbations. Currently, raw dose--response data are fragmented,
+inconsistently reported, and often hidden in supplementary files, making
+it difficult for researchers to reproduce analyses, perform cross-study
+comparisons, or build robust models of microbial resistance and cancer
+evolution.
+
+Qres directly addresses this problem by providing the R community with a
+standardized, open-source infrastructure for dose--response data. The
+platform combines a robust database and public API, an R package (QresR)
+for reproducible workflows, and an extended Shiny interface that enables
+both upload and download of raw data with curated metadata, along with
+interactive visualization and analysis.
+
+The project is developed in collaboration with international partners:
+Predictive tools from FiMAR (Helsinki) and Human Technopol (Milan) will
+be reimplemented or wrapped for integration into R. The DGrowthR package
+(Helmholtz, Munich) will be incorporated for bacterial growth curve
+analysis.
+
+Benefits to the R community: * Access to curated, FAIR-compliant raw
+dose--response datasets. * Reproducible workflows for microbial growth,
+cancel cell growth and resistance modeling. * Integration of
+cross-language predictive tools into R. * Community guidelines
+establishing gold standards for dose--response data.
+
+By solving the accessibility and reproducibility gap in dose--response
+research, the Qres will accelerate discovery, improve experimental
+design, and expand R's role as the central platform for quantitative
+biology (for example, in the field of antibiotic resistance).
+
+\subsection{Detail}\label{detail}
+
+\subsubsection{Minimum Viable Product}\label{minimum-viable-product}
+
+The smallest version of Qres that delivers value to the R community will
+include: 1. A database + REST API for storing and retrieving
+standardized dose--response datasets. 2. An R package (QresR) providing
+functions to query the API and return data in tidy formats for
+downstream analysis with packages like drc, nlme, and brms. 3. A basic
+Shiny interface that allows users to upload raw growth curve data with
+metadata, validates submissions, and enables download of standardized
+datasets.
+
+This MVP ensures that from the beginning, R users can both contribute
+new datasets and reuse existing data in reproducible workflows.
+
+\subsubsection{Architecture}\label{architecture}
+
+At a high level, the architecture will consist of: 1. Database Layer *
+Stores raw growth measurements, curated metadata, and derived resistance
+traits. * Implements FAIR-compliant schemas with persistent identifiers
+for citation. 2. API Layer * RESTful API (JSON-based) for standardized
+programmatic access. * Enables both raw data retrieval and derived
+parameter queries. 3. R Package (QresR) * Provides user-facing functions
+to query the API, clean and preprocess data, and connect to modeling
+packages. * Interfaces with external analysis tools such as DGrowthR. 4.
+Web Interface (Shiny) * Supports upload of raw data + metadata via
+automated submission form. * Performs validation, error reporting, and
+visualization of fitted curves. * Allows users to explore and download
+datasets interactively. 5. External Tool Integration * Wrappers or
+reimplementations for Python/Julia tools (Mustonen, Pinheiro). *
+Optional DGrowthR workflows for bulk analysis.
+
+\subsubsection{Assumptions}\label{assumptions}
+
+The project assumes that: 1. Community willingness: Researchers will
+contribute raw dose--response datasets when given easy submission tools
+and proper citation credit (via persistent identifiers). 2. Technical
+feasibility: Core predictive tools from Python/Julia can be either
+wrapped or reimplemented in R without loss of fidelity. 3. Resource
+stability: Hosting on University of Cologne servers remains available
+for the duration of the project, with minimal cost. 4. Sufficient
+adoption: By leveraging CRC1310, FiMAR, and Human Technopol networks,
+Qres will gain early adopters who validate and stress-test the system.
+
+If any of these assumptions were false (e.g.~very low data submission,
+or inability to wrap external tools), Qres would still deliver value as
+a curated database + API + R package, but the broader interoperability
+and uptake could be delayed.
+
+\subsubsection{External dependencies}\label{external-dependencies}
+
+Qres builds on several external components: 1. R ecosystem: Packages
+including drc, nlme, brms, and shiny for modeling and visualization. 2.
+DGrowthR (Helmholtz, Munich): External R package for analysis,
+integrated into Qres workflows. 3. Python/Julia predictive tools:
+Developed by collaborators at FiMAR (Helsinki) and Human Technopol
+(Milan); require wrapping or partial reimplementation in R. 4. Server
+infrastructure: Hosted on University of Cologne's R Shiny server, with
+additional database backend. 5. Community datasets: Contributions from
+CRC1310, FiMAR, Human Technopol, and beyond are essential to seed the
+database.
+
+\section{Project plan}\label{project-plan}
+
+\subsection{Start-up phase}\label{start-up-phase}
+
+Collaboration platform: We will host all code on GitHub under an open
+repository (qres-platform), including the API, Shiny interface, and R
+package. Issues and pull requests will be used to manage contributions
+from collaborators and the community.
+
+License decisions: All code will be released under the MIT license; data
+schemas and metadata standards will be released under CC-BY 4.0 to
+maximize reuse.
+
+Reporting framework: We will provide quarterly progress updates to the
+ISC, including blog posts summarizing milestones. The GitHub repository
+will include a project board to track deliverables.
+
+\subsection{Technical delivery}\label{technical-delivery}
+
+Months 1--2: Finalize schema design, API blueprint, GitHub repo setup,
+and automated CI/CD pipeline for the R package.
+
+Months 3--4: Implement database backend and API endpoints; first
+internal prototype of data upload form.
+
+Months 5--6: Release alpha version of QresR package (GitHub); API
+documentation available online.
+
+Months 7--8: Extend Shiny interface with validated data submission and
+visualization modules; first external test submissions.
+
+Months 9--10: Integrate predictive tools (Python/Julia) and DGrowthR;
+provide R wrappers.
+
+Months 11--12: Community testing with CRC1310/FiMAR/Helmholtz datasets;
+finalize CRAN release of QresR; publish white paper/guidelines.
+
+\subsection{Other aspects}\label{other-aspects}
+
+Licensing: Code under MIT; data standards and metadata under CC-BY 4.0.
+
+Hosting: Public GitHub repository with issue tracking and contribution
+guidelines; Shiny app hosted on University of Cologne's R Shiny server.
+
+Dissemination: 1. Announcement blog post on R Consortium blog at project
+start. 2. Quarterly blog updates on progress. 3. Delivery blog post on
+release of QresR (CRAN). 4. Presentations at UseR! 2026, ISC meetings,
+and relevant microbiology conferences. 5. Social media announcements
+(via CRC1310, FiMAR, and partner institutes).
+
+\subsection{Budget \& funding plan}\label{budget-funding-plan}
+
+Funding is requested primarily for labor costs: Two PhD students (12
+months each) 1. PhD student 1 (Software Development \& Data
+Engineering): Responsible for database, API, and storage pipelines. 2.
+PhD student 2 (R/Shiny/API Development): Responsible for R package,
+Shiny interface, and automated data submission. 3. The PI (Viera
+Kováčová, University of Cologne) will supervise the project but does not
+request salary support. 4. No funds are requested for travel,
+publication fees, or hardware. University of Cologne provides server
+infrastructure.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.5789}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0316}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0947}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1789}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1158}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+FTE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Duration
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cost per year (€)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Total (€)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+PhD Student 1 -- Software Development \& Data Engineering & 1.0 & 12
+months & 76,500 & 76,500 \\
+PhD Student 2 -- R/Shiny/API Development & 1.0 & 12 months & 76,500 &
+76,500 \\
+Total Personnel & 2.0 & 12 months & -- & 153,000 \\
+\end{longtable}
+
+Milestones tied to funding release: Month 4: API + database schema
+complete → €30,600 Month 6: Alpha R package + API documentation →
+€30,600 Month 8: Shiny submission system + visualization → €30,600 Month
+10: Integration with external tools + DGrowthR → €30,600 Month 12: CRAN
+release, guidelines, dissemination → €30,600
+
+\section{Budget Justification}\label{budget-justification}
+
+The requested funding is dedicated entirely to two full-time PhD student
+positions for 12 months. One PhD student will focus on software
+development and data engineering (database design, storage pipelines,
+REST API), while the second will focus on R/Shiny and API development (R
+package, submission interface, visualization). This division of labor is
+essential to ensure rapid and parallel progress across the backend and
+user-facing components of Qres. The PI (Viera Kováčová) will supervise
+the project but does not request salary support, ensuring that 100\% of
+ISC funds are invested directly into infrastructure development for the
+R community.
+
+\section{Success}\label{success}
+
+\subsection{Definition of done}\label{definition-of-done}
+
+The project will be considered complete and successful when: 1. The Qres
+database and REST API are fully operational, allowing storage and
+retrieval of dose--response datasets with curated metadata. 2. The QresR
+package is publicly released on CRAN and GitHub, enabling R users to
+programmatically query, preprocess, and analyze datasets. 3. The Shiny
+interface supports automated data submission (with validation) and
+interactive download/visualization of raw data and fitted models. 4.
+Integration with at least one external predictive tool (Python/Julia)
+and DGrowthR is demonstrated through vignettes and tutorials. 5.
+Community guidelines / white paper on best practices for dose--response
+experiments are published and disseminated.
+
+\subsection{Measuring success}\label{measuring-success}
+
+Success will be measured using concrete, trackable outputs: 1. Technical
+outputs: * QresR package accepted on CRAN. * API documentation publicly
+available. * Shiny interface deployed with submission/download
+capability.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Community uptake:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  At least 5 external datasets submitted and validated through the
+  automated submission system.
+\item
+  Engagement of early adopters from CRC1310, FiMAR, Human Technopol, and
+  Helmholtz.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Dissemination:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Release of at least 2 vignettes/tutorials demonstrating workflows in
+  R.
+\item
+  Publication of guidelines for dose--response data management and
+  modeling.
+\end{itemize}
+
+\subsection{Future work}\label{future-work}
+
+Once Qres reaches full functionality, we will prepare a high-impact
+publication describing its architecture, features, and scientific use
+cases. The manuscript will highlight: * The need for standardized,
+FAIR-compliant dose--response data. * Qres infrastructure (database,
+API, R package, Shiny interface). * Integration of predictive tools
+across R, Python, and Julia. * Demonstration datasets from microbial
+resistance and cancer evolution. * Benchmarks comparing automated
+analysis pipelines (e.g.~DGrowthR, Kinbiont).
+
+Target journals could include Nature Biotechnology, Nature
+Communications, Nucleic Acids Research (Database issue), or
+Bioinformatics.
+
+This publication will provide a citable reference for Qres, ensuring
+that dataset contributors receive recognition and that the platform is
+embedded in the global research ecosystem.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-buxfcrkner2017}
+Bürkner, Paul-Christian. 2017. {``Brms: An r Package for Bayesian
+Multilevel Models Using Stan.''} \emph{Journal of Statistical Software}
+80 (1): 1--28.
+
+\bibitem[\citeproctext]{ref-feldl2025}
+Feldl, Medina, and Roberto Olayo Alarcon. 2025. \emph{DGrowthR:
+Bacterial Growth Curve Analysis}.
+\url{https://bio-datascience.github.io/DGrowthR/}.
+
+\bibitem[\citeproctext]{ref-pinheiro2023}
+Pinheiro, José, and Douglas Bates. 2023. \emph{Mixed-Effects Models in s
+and s-PLUS}. Springer.
+
+\bibitem[\citeproctext]{ref-ritz2015}
+Ritz, Christian, Florent Baty, Jens C Streibig, and Daniel Gerhard.
+2015. {``Dose-Response Analysis Using r.''} \emph{PLOS ONE} 10 (12):
+e0146021.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

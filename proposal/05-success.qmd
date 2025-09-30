@@ -1,36 +1,53 @@
 # Success
 
 ## Definition of done
+
 The project will be considered complete and successful when:
-1. The Qres database and REST API are fully operational, allowing storage and retrieval of dose–response datasets with curated metadata.
-2. The QresR package is publicly released on CRAN and GitHub, enabling R users to programmatically query, preprocess, and analyze datasets.
-3. The Shiny interface supports automated data submission (with validation) and interactive download/visualization of raw data and fitted models.
-4. Integration with at least one external predictive tool (Python/Julia) and DGrowthR is demonstrated through vignettes and tutorials.
-5. Community guidelines / white paper on best practices for dose–response experiments are published and disseminated.
+
+1.  The Qres database and REST API are fully operational, allowing storage and retrieval of dose–response datasets with curated metadata.
+
+2.  The QresR package is publicly released on CRAN and GitHub, enabling R users to programmatically query, preprocess, and analyze datasets.
+
+3.  The Shiny interface supports automated data submission (with validation) and interactive download/visualization of raw data and fitted models.
+
+4.  Integration with external predictive tools (Kinbiont Julia [@Angaroni2025], DGrowthR [@Feldl2025] and *bmdrc* Python [@Degnan2025]) is demonstrated through vignettes and tutorials.
+
+5.  Community guidelines / white paper on best practices for dose–response experiments are published and disseminated.
 
 ## Measuring success
+
 Success will be measured using concrete, trackable outputs:
-1. Technical outputs:
-* QresR package accepted on CRAN.
-* API documentation publicly available.
-* Shiny interface deployed with submission/download capability.
 
-2. Community uptake:
-* At least 5 external datasets submitted and validated through the automated submission system.
-* Engagement of early adopters from CRC1310, FiMAR, Human Technopol, and Helmholtz.
+1.  Technical outputs:
 
-3. Dissemination:
-* Release of at least 2 vignettes/tutorials demonstrating workflows in R.
-* Publication of guidelines for dose–response data management and modeling.
+-   QresR package accepted on CRAN.
+-   API documentation publicly available.
+-   Shiny interface deployed with submission/download capability.
+
+2.  Community uptake:
+
+-   At least 5 external datasets submitted and validated through the automated submission system.
+
+-   Engagement of early adopters from:
+
+    -   [CRC1310: Predictability in Evolution, University of Cologne](https://crc1310.uni-koeln.de/)
+    -   [FiMAR: Finnish Centre of Excellence in Antimicrobial Resistance Research](https://www.fimar.fi/)
+    -   [Human Technopole, Milan](https://humantechnopole.it/en/)
+    -   [Helmholtz Munich – Helmholtz Zentrum München](https://www.helmholtz-munich.de/en)
+
+3.  Dissemination:
+
+-   Release of at least 2 vignettes/tutorials demonstrating workflows in R.
+-   Publication of guidelines for dose–response data management and modeling.
 
 ## Future work
+
 Once Qres reaches full functionality, we will prepare a high-impact publication describing its architecture, features, and scientific use cases. The manuscript will highlight:
-* The need for standardized, FAIR-compliant dose–response data.
-* Qres infrastructure (database, API, R package, Shiny interface).
-* Integration of predictive tools across R, Python, and Julia.
-* Demonstration datasets from microbial resistance and cancer evolution.
-* Benchmarks comparing automated analysis pipelines (e.g. DGrowthR, Kinbiont).
 
-Target journals could include Nature Biotechnology, Nature Communications, Nucleic Acids Research (Database issue), or Bioinformatics.
+-   The need for standardized, FAIR-compliant dose–response data.
+-   Qres infrastructure (database, API, R package, Shiny interface).
+-   Integration of predictive tools across R, Python, and Julia.
+-   Demonstration datasets from microbial resistance and cancer evolution.
+-   Benchmarks comparing automated analysis pipelines (e.g., DGrowthR, Kinbiont).
 
-This publication will provide a citable reference for Qres, ensuring that dataset contributors receive recognition and that the platform is embedded in the global research ecosystem.
+Target journals could include Nature Biotechnology, Nature Communications, Nucleic Acids Research (Database issue), or Bioinformatics. This publication will provide a citable reference for Qres, ensuring that dataset contributors receive recognition and that the platform is embedded in the global research ecosystem.

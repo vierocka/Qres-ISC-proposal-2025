@@ -1,102 +1,103 @@
 # The proposal
+
 ## Approach and Work Plan
+
 We will address the problem of fragmented and inaccessible dose–response datasets by developing Qres into an open, standardized, R-integrated platform with the following concrete actions:
-** API and Database Development (Months 1–4)
-* Implement a REST API with standardized JSON schema.
-* Expand the database schema to store raw growth curves and curated metadata.
-* Establish FAIR-compliant pipelines for data ingestion.
-** R Package (Months 5–6)
-* Develop an open-source R package (QresR) to query the database and API.
-* Provide functions for data preprocessing, extraction of resistance traits, and integration with existing modeling packages (drc, nlme, brms).
-* Begin integration of DGrowthR for bulk growth curve analysis.
-** Shiny Interface and Submission Form (Months 7–8)
-* Extend the existing Shiny prototype into a full interface supporting upload and download of raw growth data with metadata.
-* Implement automated submission validation and error reporting.
-* Add interactive visualization and curve-fitting modules.
-** Cross-Language Integration (Months 9–10)
-* Reimplement or wrap selected Python/Julia predictive tools developed by collaborators (Mustonen, Pinheiro).
-* Benchmark results across platforms to ensure reproducibility.
-** Testing, Standards, and Dissemination (Months 11–12)
-* Pilot test data submissions with internal and external collaborators.
-* Optimize submission form and analysis workflows.
-* Publish the R package on CRAN, complete documentation, tutorials, and case studies.
-* Release community guidelines establishing gold standards for dose–response experiments.
+
+### API and Database Development (Months 1–4)
+
+-   **Part-time developer (0.5 FTE):** implement a REST API with standardized JSON schema, under guidance from the PI and with consultant code review.
+-   **Student assistant:** begin collecting and formatting test datasets with metadata for ingestion.
+-   Expand the database schema to store raw growth curves and curated metadata.
+-   Establish FAIR-compliant pipelines for data ingestion.
+
+### R Package (Months 5–6)
+
+-   **PI:** develops the open-source R package (QresR) with support from the part-time developer.
+-   Provide functions for data preprocessing, extraction of resistance traits, and integration with existing modeling packages (*drc*, *nlme*, *brms*).
+-   Begin integration of **DGrowthR** for bulk growth curve analysis.
+
+### Shiny Interface and Submission Form (Months 7–8)
+
+-   **PI:** leads development of the Shiny modules, with the student assistant testing and curating submissions.
+-   Extend the existing Shiny prototype into a full interface supporting upload and download of raw growth data with metadata.
+-   Implement automated submission validation and error reporting.
+-   Add interactive visualization and curve-fitting modules.
+
+### Cross-Language Integration (Months 9–10)
+
+-   Reimplement or wrap selected Python/Julia predictive tools developed by collaborators (Mustonen, Pinheiro).
+-   Benchmark results across platforms to ensure reproducibility.
+
+### Testing, Standards, and Dissemination (Months 11–12)
+
+-   Pilot test data submissions with internal and external collaborators.
+-   Optimize submission form and analysis workflows.
+-   Publish the R package on CRAN, complete documentation, tutorials, and case studies.
+-   Release community guidelines establishing gold standards for dose–response experiments.
+
+**Lean development model:** The PI (Viera Kováčová) will co-develop the R/Shiny code, supported by a part-time developer (0.5 FTE) responsible for database and API implementation, and a student assistant acting as data steward for metadata curation and testing. External consultants will provide targeted mentoring and code review to optimize workflows.
+
+------------------------------------------------------------------------
 
 ## Risk Management
-1.) Risk: Data heterogeneity -> Mitigation: enforce a standardized metadata schema and automated validation in the Shiny submission form.
-2.) Risk: Integration complexity of Python/Julia tools -> Mitigation: begin with a small subset of methods and provide R wrappers before attempting full reimplementations.
-3.) Risk: Limited adoption -> Mitigation: leverage CRC1310, FiMAR, and Human Technopol networks to ensure early use and dataset contributions; provide persistent identifiers for proper citation.
+
+1.  **Data heterogeneity** → Mitigation: enforce a standardized metadata schema and automated validation in the Shiny submission form.
+2.  **Integration complexity of Python/Julia tools** → Mitigation: begin with a small subset of methods and provide R wrappers before attempting full reimplementations, with consultant support.
+3.  **Limited adoption** → Mitigation: leverage [CRC1310](https://crc1310.uni-koeln.de/), [FiMAR](https://www.fimar.fi/), and [Human Technopole](https://humantechnopole.it/en/) networks to ensure early use and dataset contributions; provide persistent identifiers for proper citation.
+
+------------------------------------------------------------------------
 
 ## Timeline
-Months 1–4: Database + API development.
-Months 5–6: R package prototype.
-Months 7–8: Shiny submission system.
-Months 9–10: Cross-language integration.
-Month 11: Testing and optimization.
-Month 12: Release, dissemination, and publication of guidelines.
+
+| Months | Milestones |
+|--------------------|----------------------------------------------------|
+| 1–4 | Database schema finalized; REST API prototype; test datasets curated; FAIR-compliant ingestion pipeline established. |
+| 5–6 | QresR R package prototype released on GitHub; functions for data access and preprocessing; begin DGrowthR integration. |
+| 7–8 | Shiny submission system extended: upload/download with metadata validation; visualization and curve-fitting modules implemented. |
+| 9–10 | Cross-language integration: selected Python (FiMAR) and Julia (Human Technopole) tools wrapped/reimplemented in R; reproducibility benchmarking. |
+| 11 | Pilot testing with CRC1310, FiMAR, and Helmholtz datasets; optimization of submission workflows. |
+| 12 | CRAN release of QresR; full documentation, tutorials, case studies; community guidelines published. |
+
+------------------------------------------------------------------------
 
 ## Overview
+
 The Qres platform is an open-access dose–response database and web service that collects, organizes, and analyzes raw, time-resolved microbial growth curves under antibiotic, genetic, and environmental perturbations. Currently, raw dose–response data are fragmented, inconsistently reported, and often hidden in supplementary files, making it difficult for researchers to reproduce analyses, perform cross-study comparisons, or build robust models of microbial resistance and cancer evolution.
 
 Qres directly addresses this problem by providing the R community with a standardized, open-source infrastructure for dose–response data. The platform combines a robust database and public API, an R package (QresR) for reproducible workflows, and an extended Shiny interface that enables both upload and download of raw data with curated metadata, along with interactive visualization and analysis.
 
-The project is developed in collaboration with international partners:
-Predictive tools from FiMAR (Helsinki) and Human Technopol (Milan) will be reimplemented or wrapped for integration into R.
-The DGrowthR package (Helmholtz, Munich) will be incorporated for bacterial growth curve analysis.
+The project is developed under a **lean staffing plan** (PI + part-time developer + student assistant, plus targeted consultancy) and in collaboration with international partners:\
+- Predictive and analytical tools from [FiMAR, Helsinki](https://www.fimar.fi/) and [Human Technopole, Milan](https://humantechnopole.it/en/) will be reimplemented or wrapped for integration into R.\
+- The [DGrowthR package](https://bio-datascience.github.io/DGrowthR/) [@feldl2025] (Helmholtz, Munich) will be incorporated for bacterial growth curve analysis.
 
-Benefits to the R community:
-* Access to curated, FAIR-compliant raw dose–response datasets.
-* Reproducible workflows for microbial growth, cancel cell growth and resistance modeling.
-* Integration of cross-language predictive tools into R.
-* Community guidelines establishing gold standards for dose–response data.
+**Benefits to the R community:**
 
-By solving the accessibility and reproducibility gap in dose–response research, the Qres will accelerate discovery, improve experimental design, and expand R’s role as the central platform for quantitative biology (for example, in the field of antibiotic resistance).
+-   Access to curated, FAIR-compliant raw dose–response datasets.
+-   Reproducible workflows for microbial growth, cancer cell growth, and resistance modeling.
+-   Integration of cross-language predictive tools into R.
+-   Community guidelines establishing gold standards for dose–response data.
+
+By solving the accessibility and reproducibility gap in dose–response research, Qres will accelerate discovery, improve experimental design, and expand R’s role as the central platform for quantitative biology (e.g., antibiotic resistance research).
+
+------------------------------------------------------------------------
 
 ## Detail
 
 ### Minimum Viable Product
 
-The smallest version of Qres that delivers value to the R community will include:
-1. A database + REST API for storing and retrieving standardized dose–response datasets.
-2. An R package (QresR) providing functions to query the API and return data in tidy formats for downstream analysis with packages like drc, nlme, and brms.
+The smallest version of Qres that delivers value to the R community will include:\
+1. A database + REST API for storing and retrieving standardized dose–response datasets.\
+2. An R package (QresR) providing functions to query the API and return data in tidy formats for downstream analysis with packages like *drc*, *nlme*, and *brms*.\
 3. A basic Shiny interface that allows users to upload raw growth curve data with metadata, validates submissions, and enables download of standardized datasets.
 
 This MVP ensures that from the beginning, R users can both contribute new datasets and reuse existing data in reproducible workflows.
 
 ### Architecture
 
-At a high level, the architecture will consist of:
-1. Database Layer
-* Stores raw growth measurements, curated metadata, and derived resistance traits.
-* Implements FAIR-compliant schemas with persistent identifiers for citation.
-2. API Layer
-* RESTful API (JSON-based) for standardized programmatic access.
-* Enables both raw data retrieval and derived parameter queries.
-3. R Package (QresR)
-* Provides user-facing functions to query the API, clean and preprocess data, and connect to modeling packages.
-* Interfaces with external analysis tools such as DGrowthR.
-4. Web Interface (Shiny)
-* Supports upload of raw data + metadata via automated submission form.
-* Performs validation, error reporting, and visualization of fitted curves.
-* Allows users to explore and download datasets interactively.
-5. External Tool Integration
-* Wrappers or reimplementations for Python/Julia tools (Mustonen, Pinheiro).
-* Optional DGrowthR workflows for bulk analysis.
-
-### Assumptions
-
-The project assumes that:
-1. Community willingness: Researchers will contribute raw dose–response datasets when given easy submission tools and proper citation credit (via persistent identifiers).
-2. Technical feasibility: Core predictive tools from Python/Julia can be either wrapped or reimplemented in R without loss of fidelity.
-3. Resource stability: Hosting on University of Cologne servers remains available for the duration of the project, with minimal cost.
-4. Sufficient adoption: By leveraging CRC1310, FiMAR, and Human Technopol networks, Qres will gain early adopters who validate and stress-test the system.
-
-If any of these assumptions were false (e.g. very low data submission, or inability to wrap external tools), Qres would still deliver value as a curated database + API + R package, but the broader interoperability and uptake could be delayed.
-
-### External dependencies
-Qres builds on several external components:
-1. R ecosystem: Packages including drc, nlme, brms, and shiny for modeling and visualization.
-2. DGrowthR (Helmholtz, Munich): External R package for analysis, integrated into Qres workflows.
-3. Python/Julia predictive tools: Developed by collaborators at FiMAR (Helsinki) and Human Technopol (Milan); require wrapping or partial reimplementation in R.
-4. Server infrastructure: Hosted on University of Cologne’s R Shiny server, with additional database backend.
-5. Community datasets: Contributions from CRC1310, FiMAR, Human Technopol, and beyond are essential to seed the database.
+At a high level, the architecture will consist of:\
+1. **Database Layer** – stores raw growth measurements, curated metadata, and derived resistance traits; implements FAIR-compliant schemas with persistent identifiers.\
+2. **API Layer** – RESTful API (JSON-based) for standardized programmatic access; enables both raw data retrieval and derived parameter queries.\
+3. **R Package (QresR)** – provides functions to query the API, clean and preprocess data, and connect to modeling packages; interfaces with external tools such as DGrowthR.\
+4. **Web Interface (Shiny)** – supports upload of raw data + metadata via automated submission form; performs validation, error reporting, and visualization of fitted curves; allows users to explore and download datasets interactively.\
+5. **External Tool Integration** – wrappers or reimplementations for Python/Julia
