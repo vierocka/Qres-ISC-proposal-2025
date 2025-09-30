@@ -10,7 +10,7 @@ The project will deliver:\
 - A **public API** and an **R package** (`QresR`) for standardized data access, database storage, and analysis.\
 - An **enhanced R Shiny interface** to upload and download raw data with metadata, validate new datasets, and enable interactive visualization and analysis directly in the browser.\
 - **Integration of predictive tools** developed in Python by [Prof. Ville Mustonen, FiMAR](https://www.fimar.fi/) and in Julia by [Dr. Fernanda Pinheiro, Human Technopole, Milan](https://humantechnopole.it/en/), enabling cross-language interoperability.\
-- Incorporation of the [DGrowthR package](https://bio-datascience.github.io/DGrowthR/) [@feldl2025] developed at [Helmholtz Munich](https://www.helmholtz-munich.de/en) as an analysis option for bacterial growth data.
+- Incorporation of the [DGrowthR package](https://bio-datascience.github.io/DGrowthR/) [@Feldl2025] developed at [Helmholtz Munich](https://www.helmholtz-munich.de/en) as an analysis option for bacterial growth data.
 
 Key outputs include an R package released on CRAN, standardized data formats, reproducible workflows, and community guidelines establishing **best practices and gold standards** for dose–response experiments. All analytical tools developed within Qres will be **species agnostic**, ensuring applicability across microbes, cancer models, pharmacological assays, and toxicology screens. By bridging R with Python and Julia tools, Qres will provide a foundation for AI-driven analysis and long-term reproducible science. This project directly addresses the R Consortium’s mission by strengthening technical infrastructure, fostering interoperability, and serving a broad international user base across biology, biophysics, and medicine.
 

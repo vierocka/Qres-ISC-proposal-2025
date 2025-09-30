@@ -69,7 +69,7 @@ Qres directly addresses this problem by providing the R community with a standar
 
 The project is developed under a **lean staffing plan** (PI + part-time developer + student assistant, plus targeted consultancy) and in collaboration with international partners:\
 - Predictive and analytical tools from [FiMAR, Helsinki](https://www.fimar.fi/) and [Human Technopole, Milan](https://humantechnopole.it/en/) will be reimplemented or wrapped for integration into R.\
-- The [DGrowthR package](https://bio-datascience.github.io/DGrowthR/) [@feldl2025] (Helmholtz, Munich) will be incorporated for bacterial growth curve analysis.
+- The [DGrowthR package](https://bio-datascience.github.io/DGrowthR/) [@Feldl2025] (Helmholtz, Munich) will be incorporated for bacterial growth curve analysis.
 
 **Benefits to the R community:**
 
