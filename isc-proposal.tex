@@ -5,9 +5,10 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-]{article}
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
 \usepackage{xcolor}
-\usepackage[top=10pc,bottom=10pc,left=11pc,right=11pc,heightrounded,left=1.25in,right=1.25in]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
@@ -30,6 +31,39 @@
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
 
 
 \usepackage{longtable,booktabs,array}
@@ -102,183 +136,10 @@
 
 
 
+ 
 
 
-% -----------------------
-% CUSTOM PREAMBLE STUFF
-% -----------------------
-
-% -----------------
-% Typography tweaks
-% -----------------
-% Indent size
-\setlength{\parindent}{1pc}  % 1p0
-
-% Fix widows and orphans
-\usepackage[all,defaultlines=2]{nowidow}
-
-% List things
-\usepackage{enumitem}
-% Same document-level indentation for ordered and ordered lists
-\setlist[1]{labelindent=\parindent}
-\setlist[itemize]{leftmargin=*}
-\setlist[enumerate]{leftmargin=*}
-
-% Wrap definition list terms
-% https://tex.stackexchange.com/a/9763/11851
-\setlist[description]{style=unboxed}
-
-
-% For better TOCs
-\usepackage[titles]{tocloft}
-
-% Remove left margin in lists inside longtables
-% https://tex.stackexchange.com/a/378190/11851
-\AtBeginEnvironment{longtable}{\setlist[itemize]{nosep, wide=0pt, leftmargin=*, before=\vspace*{-\baselineskip}, after=\vspace*{-\baselineskip}}}
-
-% Allow for /singlespacing and /doublespacing
-\usepackage{setspace}
-
-
-% -----------------
-% Title block stuff
-% -----------------
-
-% Abstract
-\usepackage[overload]{textcase}
-\usepackage[runin]{abstract}
-\renewcommand{\abstractnamefont}{\sffamily\footnotesize\bfseries\MakeUppercase}
-\renewcommand{\abstracttextfont}{\sffamily\small}
-\setlength{\absleftindent}{\parindent * 2}
-\setlength{\absrightindent}{\parindent * 2}
-\abslabeldelim{\quad}
-\setlength{\abstitleskip}{-\parindent}
-
-
-% Keywords
-\newenvironment{keywords}
-{\vskip -3em \hspace{\parindent}\small\sffamily{\sffamily\footnotesize\bfseries\MakeUppercase{Keywords}}\quad}
-{\vskip 3em}
-
-  
-% Title
-\usepackage{titling}
-\setlength{\droptitle}{3em}
-\pretitle{\par\vskip 5em \begin{flushleft}\LARGE\sffamily\bfseries}
-\posttitle{\par\end{flushleft}\vskip 0.75em}
-
-
-% Authors
-%
-% PHEW this is complicated for a number of reasons!
-%
-% When using \and with multiple authors, the article class in LaTeX wraps each 
-% author block in a tabluar environment with a hardcoded center alignment. It's 
-% possible to use \preauthor{} to start tabulars with a left alignment {l}, but 
-% that only applies to the first author because the others all use \and with the 
-% hardcoded {c}. But we can override the \and command and add our own {l}
-%
-% (See https://github.com/rstudio/rmarkdown/issues/1716#issuecomment-560601691 
-% for an example of redefining \and to just be \\)
-%
-% That's all great, except tabulars have some amount of default horizontal 
-% padding, which makes left-aligned author blocks not actuall get fully 
-% left-aligned on the page. We can set the horizontal padding for the column to 
-% 0, but it requires some wonky syntax: {@{\hspace{0em}}l@{}}
-\renewcommand{\and}{\end{tabular} \hskip 3em \begin{tabular}[t]{@{\hspace{0em}}l@{}}}
-\preauthor{\begin{flushleft}
-           \lineskip 1.5em 
-           \begin{tabular}[t]{@{\hspace{0em}}l@{}}}
-\postauthor{\end{tabular}\par\end{flushleft}}
-
-% Omit the date since the \published command does that
-\predate{}
-\postdate{}
-
-% Command for a note at the top of the first page describing the publication
-% status of the paper.
-\newcommand{\published}[1]{%
-   \gdef\puB{#1}}
-   \newcommand{\puB}{}
-   \renewcommand{\maketitlehooka}{%
-       \par\noindent\footnotesize\sffamily \puB}
-
-
-% ------------------
-% Section headings
-% ------------------
-\usepackage{titlesec}
-\titleformat*{\section}{\Large\sffamily\bfseries\raggedright}
-\titleformat*{\subsection}{\large\sffamily\bfseries\raggedright}
-\titleformat*{\subsubsection}{\normalsize\sffamily\bfseries\raggedright}
-\titleformat*{\paragraph}{\small\sffamily\bfseries\raggedright}
-
-% \titlespacing{<command>}{<left>}{<before-sep>}{<after-sep>}
-% Starred version removes indentation in following paragraph
-\titlespacing*{\section}{0em}{2em}{0.1em}
-\titlespacing*{\subsection}{0em}{1.25em}{0.1em}
-\titlespacing*{\subsubsection}{0em}{0.75em}{0em}
-
-
-% -----------
-% Footnotes
-% -----------
-% NB: footmisc has to come after setspace and biblatex because of conflicts
-\usepackage[bottom, flushmargin]{footmisc}
-\renewcommand*{\footnotelayout}{\footnotesize}
-
-\addtolength{\skip\footins}{10pt}    % vertical space between rule and main text
-\setlength{\footnotesep}{5pt}  % vertical space between footnotes
-
-
-% ----------
-% Captions
-% ----------
-\usepackage[font={small,sf}, labelfont={small,sf,bf}]{caption}
-
-
-% --------
-% Macros
-% --------
-% pandoc will not convert text within \begin{} XXX \end{} to Markdown and will
-% treat it as regular TeX. Because of this, it's impossible to do stuff like
-% this:
-
-% \begin{landscape}
-%
-% | One | Two   |
-% |-----+-------|
-% | my  | table |
-% | is  | nice  |
-%
-% \end{landscape}
-%
-% Since it'll render like: | One | Two | |—–+——-| | my | table | | is | nice |
-% 
-% BUT, from this http://stackoverflow.com/a/41945462/120898 we can get around
-% this by creating new commands for \begin and \end, like this:
-\usepackage{pdflscape}
-\newcommand{\blandscape}{\begin{landscape}}
-\newcommand{\elandscape}{\end{landscape}}
-
-% \blandscape
-%
-% | One | Two   |
-% |-----+-------|
-% | my  | table |
-% | is  | nice  |
-%
-% \elandscape
-
-% Same thing, but for generic groups
-% But can't use \bgroup and \egroup because those are built-in TeX things
-\newcommand{\stgroup}{\begingroup}
-\newcommand{\fingroup}{\endgroup}
-
-
-% ---------------------------
-% END CUSTOM PREAMBLE STUFF
-% ---------------------------
+\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -327,81 +188,33 @@
   pdftitle={QRes - An Open-Source Dose--Response Data Platform for the R Community},
   pdfauthor={Viera Kovacova},
   colorlinks=true,
-  linkcolor={DarkSlateBlue},
+  linkcolor={blue},
   filecolor={Maroon},
-  citecolor={DarkSlateBlue},
-  urlcolor={DarkSlateBlue},
+  citecolor={Blue},
+  urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
 
-% -----------------------
-% END-OF-PREAMBLE STUFF
-% -----------------------
-
-
-
-% ---------------------- 
-% Title block elements
-% ---------------------- 
-\usepackage{orcidlink}  % Create automatic ORCID icons/links
-
 \title{QRes - An Open-Source Dose--Response Data Platform for the R
 Community}
-
-
-\author{
-{\large Viera Kovacova~\orcidlink{0000-0003-4581-4254}}%
- \\%
-Viera Kovacova, Institute for Biological Physics, University of Cologne,
-Cologne, Germany \\%
-{\footnotesize \url{}} \and
-}
-
-\date{}
-
-
-% Typeset URLs in the same font as their parent environment
-%
-% This has to come at the end of the preamble, after any biblatex stuff because 
-% some biblatex styles (like APA) define their own \urlstyle{}
-\usepackage{url}
-\urlstyle{same}
-
-% ---------------------------
-% END END-OF-PREAMBLE STUFF
-% ---------------------------
+\author{Viera Kovacova}
+\date{2025-09-30}
 \begin{document}
-% ---------------
-% TITLE SECTION
-% ---------------
-\published{\textbf{2025-09-30}}
-
 \maketitle
-
-
-
-% -------------------
-% END TITLE SECTION
-% -------------------
-
 
 
 \section{Executive Summary}\label{executive-summary}
 
 Dose--response data are fundamental to research in microbiology
-(\citeproc{ref-Lukacisinova2020}{Lukačišinová, Fernando, and Bollenbach
-2020}), oncology (\citeproc{ref-Kuosmanen2021}{Kuosmanen 2021}),
-pharmacology (\citeproc{ref-Bretz2025}{Bretz, Bornkamp, and Dumortier
-2025}; \citeproc{ref-Wang2020}{Wang et al. 2020}), biophysics
-(\citeproc{ref-Petrungaro2025}{Petrungaro et al. 2025}), and toxicology
-(\citeproc{ref-Lukacisin2019}{Lukačišin and Bollenbach 2019}). Yet raw
-datasets remain fragmented, inconsistently formatted, and often lack
-metadata, making them difficult to integrate into reproducible R
-workflows. Frequently, raw measurements are not shared at all, with only
-fitted curves or summary metrics (such as IC₅₀/OD₅₀)
-reported---sometimes based on methods inappropriate for the underlying
-data (\citeproc{ref-Bayer2023}{Bayer et al. 2023};
-\citeproc{ref-Wang2020}{Wang et al. 2020}).
+(Lukačišinová, Fernando, and Bollenbach 2020), oncology (Kuosmanen
+2021), pharmacology (Bretz, Bornkamp, and Dumortier 2025; Wang et al.
+2020), biophysics (Petrungaro et al. 2025), and toxicology (Lukačišin
+and Bollenbach 2019). Yet raw datasets remain fragmented, inconsistently
+formatted, and often lack metadata, making them difficult to integrate
+into reproducible R workflows. Frequently, raw measurements are not
+shared at all, with only fitted curves or summary metrics (such as
+IC₅₀/OD₅₀) reported---sometimes based on methods inappropriate for the
+underlying data (Bayer et al. 2023; Wang et al. 2020).
 
 In practice, raw dose--response data are stored in \textbf{small
 plain-text files reporting time and measured values}. Even for
@@ -411,11 +224,9 @@ them highly portable and easy to archive. When available, raw
 time-resolved growth data enable robust model benchmarking, transparent
 comparison of analytical methods, and reproducibility across studies.
 Beyond replication, curated raw datasets open the door to predictive
-modeling of evolutionary dynamics and treatment outcomes
-(\citeproc{ref-Kuosmanen2021}{Kuosmanen 2021};
-\citeproc{ref-Angaroni2025}{Angaroni 2025}), offering a unique
-opportunity to accelerate both fundamental discovery and translational
-applications.
+modeling of evolutionary dynamics and treatment outcomes (Kuosmanen
+2021; Angaroni 2025), offering a unique opportunity to accelerate both
+fundamental discovery and translational applications.
 
 The \href{https://growthcurvedb.shinyapps.io/growthcurvedb/}{Qres
 platform} is an open-access dose--response database and web service
@@ -442,7 +253,7 @@ by \href{https://humantechnopole.it/en/}{Dr.~Fernanda Pinheiro, Human
 Technopole, Milan}, enabling cross-language interoperability.\\
 - Incorporation of the
 \href{https://bio-datascience.github.io/DGrowthR/}{DGrowthR package}
-(\citeproc{ref-Feldl2025}{Feldl and Olayo Alarcon 2025}) developed at
+(Feldl and Olayo Alarcon 2025) developed at
 \href{https://www.helmholtz-munich.de/en}{Helmholtz Munich} as an
 analysis option for bacterial growth data.
 
@@ -540,17 +351,16 @@ of fidelity changes in mRNA and protein biosynthesis},
   \item
     Leon Sieger, PhD candidate, University of Cologne
   \item
-    Dr.~Gabriela Pertungaro, University of Cologne
-    (\citeproc{ref-Petrungaro2025}{Petrungaro et al. 2025})
+    Dr.~Gabriela Pertungaro, University of Cologne (Petrungaro et al.
+    2025)
   \item
-    Dr.~Rotem Gross (\citeproc{ref-Gross2024}{Gross et al. 2024})
+    Dr.~Rotem Gross (Gross et al. 2024)
   \item
-    Dr.~Fabrizio Angaroni (\citeproc{ref-Angaroni2025}{Angaroni 2025})
+    Dr.~Fabrizio Angaroni (Angaroni 2025)
   \item
     Medina Feldl, PhD candidate, Helmholtz, Munich -- Developer of the
-    DGrowthR package (\citeproc{ref-Feldl2025}{Feldl and Olayo Alarcon
-    2025}); contributes to Qres integration for bacterial dose--response
-    analysis.
+    DGrowthR package (Feldl and Olayo Alarcon 2025); contributes to Qres
+    integration for bacterial dose--response analysis.
   \item
     Prof.~Andreas Beyer
     (\href{mailto:andreas.beyer@uni-koeln.de}{\nolinkurl{andreas.beyer@uni-koeln.de}})
@@ -623,13 +433,12 @@ fragmented, inconsistently reported, and difficult to reuse.
   traits and dose--response parameters.
 \item
   Inappropriate or ad hoc model fitting is common, with no accepted
-  standard for model selection or parameter estimation
-  (\citeproc{ref-Bayer2023}{Bayer et al. 2023}). This not only risks
-  misinterpretation of experimental results but also reduces the
-  comparability of datasets. Without broadly available raw data, it is
-  impossible to build the large, standardized data lakes needed to train
-  and validate AI/ML tools for optimized drug management and resistance
-  prediction (\citeproc{ref-Wang2020}{Wang et al. 2020}).
+  standard for model selection or parameter estimation (Bayer et al.
+  2023). This not only risks misinterpretation of experimental results
+  but also reduces the comparability of datasets. Without broadly
+  available raw data, it is impossible to build the large, standardized
+  data lakes needed to train and validate AI/ML tools for optimized drug
+  management and resistance prediction (Wang et al. 2020).
 \end{enumerate}
 
 These gaps collectively hinder reproducibility, slow down discovery, and
@@ -670,29 +479,26 @@ enables:}\label{what-solving-the-problem-enables}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  R packages such as \textbf{drc} (\citeproc{ref-Ritz2015}{Ritz et al.
-  2015}), \textbf{nlme} (\citeproc{ref-Pinheiro2023}{Pinheiro and Bates
-  2023}), and \textbf{brms} (\citeproc{ref-Burkner2017}{Bürkner 2017})
-  support flexible model fitting, but they assume users already work
-  with curated datasets and provide no infrastructure for raw data
+  R packages such as \textbf{drc} (Ritz et al. 2015), \textbf{nlme}
+  (Pinheiro and Bates 2023), and \textbf{brms} (Bürkner 2017) support
+  flexible model fitting, but they assume users already work with
+  curated datasets and provide no infrastructure for raw data
   management.
 \item
-  \textbf{DGrowthR} (Helmholtz Munich) (\citeproc{ref-Feldl2025}{Feldl
-  and Olayo Alarcon 2025}) enables bacterial growth curve analysis in R,
-  but does not provide access to standardized raw data repositories.
+  \textbf{DGrowthR} (Helmholtz Munich) (Feldl and Olayo Alarcon 2025)
+  enables bacterial growth curve analysis in R, but does not provide
+  access to standardized raw data repositories.
 \item
-  \textbf{Kinbiont} (Julia) (\citeproc{ref-Angaroni2025}{Angaroni 2025})
-  implements growth-curve fitting and predictive modeling, and
-  \textbf{bmdrc} (Python) (\citeproc{ref-Degnan2025}{Degnan 2025})
-  provides benchmark dose--response analysis, but both are standalone
-  packages without direct integration into R workflows.
+  \textbf{Kinbiont} (Julia) (Angaroni 2025) implements growth-curve
+  fitting and predictive modeling, and \textbf{bmdrc} (Python) (Degnan
+  2025) provides benchmark dose--response analysis, but both are
+  standalone packages without direct integration into R workflows.
 \item
   Foundational models of microbial growth go back to \textbf{Monod
-  (1949)} (\citeproc{ref-Monod1949}{Monod 1949}), underscoring that
-  dose--response analysis has been a central theme in biology for
-  decades. Yet despite this long history, there is still no shared
-  platform for raw data curation, standardized metadata, and
-  interoperable analytical pipelines.
+  (1949)} (Monod 1949), underscoring that dose--response analysis has
+  been a central theme in biology for decades. Yet despite this long
+  history, there is still no shared platform for raw data curation,
+  standardized metadata, and interoperable analytical pipelines.
 \end{enumerate}
 
 To date, there is no centralized, open-access platform in R that
@@ -879,9 +685,8 @@ in collaboration with international partners:\\
 \href{https://humantechnopole.it/en/}{Human Technopole, Milan} will be
 reimplemented or wrapped for integration into R.\\
 - The \href{https://bio-datascience.github.io/DGrowthR/}{DGrowthR
-package} (\citeproc{ref-Feldl2025}{Feldl and Olayo Alarcon 2025})
-(Helmholtz, Munich) will be incorporated for bacterial growth curve
-analysis.
+package} (Feldl and Olayo Alarcon 2025) (Helmholtz, Munich) will be
+incorporated for bacterial growth curve analysis.
 
 \textbf{Benefits to the R community:}
 
@@ -1194,11 +999,9 @@ The project will be considered complete and successful when:
   validation) and interactive download/visualization of raw data and
   fitted models.
 \item
-  Integration with external predictive tools (Kinbiont Julia
-  (\citeproc{ref-Angaroni2025}{Angaroni 2025}), DGrowthR
-  (\citeproc{ref-Feldl2025}{Feldl and Olayo Alarcon 2025}) and
-  \emph{bmdrc} Python (\citeproc{ref-Degnan2025}{Degnan 2025})) is
-  demonstrated through vignettes and tutorials.
+  Integration with external predictive tools (Kinbiont Julia (Angaroni
+  2025), DGrowthR (Feldl and Olayo Alarcon 2025) and \emph{bmdrc} Python
+  (Degnan 2025)) is demonstrated through vignettes and tutorials.
 \item
   Community guidelines / white paper on best practices for
   dose--response experiments are published and disseminated.
