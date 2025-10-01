@@ -51,7 +51,7 @@ We will address the problem of fragmented and inaccessible dose–response datas
 ## Timeline
 
 | Months | Milestones |
-|--------------------|----------------------------------------------------|
+|----|----|
 | 1–4 | Database schema finalized; REST API prototype; test datasets curated; FAIR-compliant ingestion pipeline established. |
 | 5–6 | QresR R package prototype released on GitHub; functions for data access and preprocessing; begin DGrowthR integration. |
 | 7–8 | Shiny submission system extended: upload/download with metadata validation; visualization and curve-fitting modules implemented. |
